@@ -1,6 +1,8 @@
 const express = require('express');
+const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3000;
+const path = 'data.json'; // Шлях до файлу для збереження даних
 
 // Масив з уловами
 const responses = [
@@ -32,8 +34,24 @@ const responses = [
   { text: "Пляшка різдвяного Опілля 🍺", probability: 3 },
 ];
 
-// Зберігання найкращих уловів
-const bestCatches = {};
+// Завантаження даних при запуску сервера
+let bestCatches = {};
+if (fs.existsSync(path)) {
+  try {
+    const data = fs.readFileSync(path);
+    if (data.length > 0) {
+      bestCatches = JSON.parse(data);
+    }
+  } catch (error) {
+    console.log('Помилка при зчитуванні JSON з файлу:', error);
+    bestCatches = {}; // Якщо є помилка, ініціалізуємо порожній обʼєкт
+  }
+}
+
+// Збереження даних у файл
+function saveData() {
+  fs.writeFileSync(path, JSON.stringify(bestCatches, null, 2));
+}
 
 // Функція для генерації випадкової ваги (чим важче, тим рідше)
 function generateRandomWeight() {
@@ -67,6 +85,7 @@ app.get('/fish', (req, res) => {
         parseFloat(weight) > parseFloat(bestCatches[username].weight)
       ) {
         bestCatches[username] = { text: response.text, weight };
+        saveData(); // Зберігаємо дані після оновлення
       }
 
       return res.send(result);
@@ -86,7 +105,7 @@ app.get('/bestcatch', (req, res) => {
   }
 
   res.send(
-    `${username} найкращий улов: ${bestCatch.text} вагою ${bestCatch.weight} кг!`
+    ` ${username} найкращий улов: ${bestCatch.text} вагою ${bestCatch.weight} кг!`
   );
 });
 
@@ -104,7 +123,7 @@ app.get('/leaderboard', (req, res) => {
   const leaderboard = sortedCatches
     .map(
       ([username, catchData], index) =>
-        ` ${index + 1}. ${username}: ${catchData.text} вагою ${catchData.weight} кг`
+        `${index + 1}. ${username}: ${catchData.text} вагою ${catchData.weight} кг`
     )
     .join("\n");
 
