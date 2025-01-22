@@ -105,7 +105,7 @@ app.get('/bestcatch', (req, res) => {
   }
 
   res.send(
-    ` ${username} найкращий улов: ${bestCatch.text} вагою ${bestCatch.weight} кг!`
+    `${username} найкращий улов: ${bestCatch.text} вагою ${bestCatch.weight} кг!`
   );
 });
 
@@ -123,7 +123,7 @@ app.get('/leaderboard', (req, res) => {
   const leaderboard = sortedCatches
     .map(
       ([username, catchData], index) =>
-        `${index + 1}. ${username}: ${catchData.text} вагою ${catchData.weight} кг`
+        ` ${index + 1}. ${username}: ${catchData.text} вагою ${catchData.weight} кг`
     )
     .join("\n");
 
