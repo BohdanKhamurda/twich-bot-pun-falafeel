@@ -90,6 +90,27 @@ app.get('/bestcatch', (req, res) => {
   );
 });
 
+// Роут для команди !leaderboard
+app.get('/leaderboard', (req, res) => {
+  // Сортуємо улови за вагою у спадному порядку
+  const sortedCatches = Object.entries(bestCatches)
+    .sort(([, a], [, b]) => parseFloat(b.weight) - parseFloat(a.weight))
+    .slice(0, 5); // Топ-5
+
+  if (sortedCatches.length === 0) {
+    return res.send("Ніхто ще нічого не впіймав!");
+  }
+
+  const leaderboard = sortedCatches
+    .map(
+      ([username, catchData], index) =>
+        ` ${index + 1}. ${username}: ${catchData.text} вагою ${catchData.weight} кг`
+    )
+    .join("\n");
+
+  res.send(`Топ-5 найкращих уловів:\n${leaderboard}`);
+});
+
 // Запуск сервера
 app.listen(port, () => {
   console.log(`Сервер працює на порту ${port}`);
