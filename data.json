@@ -36,8 +36,8 @@
     "weight": "27.23"
   },
   "kuchmych": {
-    "text": "Банка цвяхів 🪛",
-    "weight": "10.68"
+    "text": "Оселедець 🐟",
+    "weight": "12.90"
   },
   "prayge": {
     "text": "Білд для Elden Ring 🛡️⚔️",
@@ -70,5 +70,17 @@
   "rohatezhabenyatko_halepa": {
     "text": "Форель 🐟",
     "weight": "6.55"
+  },
+  "grafdralkuma": {
+    "text": "Окунь 🐟",
+    "weight": "5.54"
+  },
+  "bzikos_": {
+    "text": "Лосось 🐟",
+    "weight": "1.99"
+  },
+  "bibagoddamn": {
+    "text": "Кіт 🐈",
+    "weight": "13.94"
   }
 }
