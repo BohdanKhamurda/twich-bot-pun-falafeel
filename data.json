@@ -28,8 +28,8 @@
     "weight": "22.14"
   },
   "terriblefeelings": {
-    "text": "Краб 🦀",
-    "weight": "7.13"
+    "text": "Лосось 🐟",
+    "weight": "13.69"
   },
   "BibaGoddamn": {
     "text": "Кавун 🍉",
@@ -62,5 +62,13 @@
   "streamelements": {
     "text": "Пляшка різдвяного Опілля 🍺",
     "weight": "4.57"
+  },
+  "punfalafeel": {
+    "text": "Акула 🦈",
+    "weight": "18.03"
+  },
+  "rohatezhabenyatko_halepa": {
+    "text": "Форель 🐟",
+    "weight": "6.55"
   }
 }
