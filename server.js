@@ -73,7 +73,7 @@ app.get('/fish', (req, res) => {
     cumulative += response.probability;
     if (random < cumulative) {
       if (response.text === "Нічого 😔") {
-        return res.send(`${username}, на жаль, ви нічого не впіймали 😔.`);
+        return res.send(`${username}, ви нічого не впіймали xddyou .`);
       }
 
       const weight = generateRandomWeight();
