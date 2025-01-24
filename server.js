@@ -78,7 +78,14 @@ app.get('/fish', (req, res) => {
       }
 
       const weight = generateRandomWeight();
-      const result = `${username} впіймав ${response.text} вагою ${weight} кг!`;
+      var result = '';
+      if(username == 'pendragon186') {
+        result = `${username} впіймав Каблук 👠 вагою ${weight} кг!`;
+      }
+      else {
+        result = `${username} впіймав ${response.text} вагою ${weight} кг!`;
+      }
+      
 
       // Оновлюємо найкращий улов
       if (
