@@ -14,7 +14,7 @@ const responses = [
   { text: "Кілька в томаті 🐟🍅", probability: 7 },
   { text: "Оселедець 🐟", probability: 8 },
   { text: "Нічого 😔", probability: 15 },
-  { text: "Фігурка Тіфу 🎮", probability: 1 },
+  { text: "Фігурка Тіфа 🎮", probability: 1 },
   { text: "Тунець 🐟", probability: 5 },
   { text: "Лосось 🐟", probability: 5 },
   { text: "Краб 🦀", probability: 3 },
