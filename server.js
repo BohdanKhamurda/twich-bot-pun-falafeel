@@ -29,6 +29,7 @@ const responses = [
   { text: "ФОП третьої групи 📜", probability: 1 },
   { text: "Сандалі 🩴", probability: 5 },
   { text: "Акула 🦈", probability: 2 },
+  { text: "Чиряк на жопі 😔", probability: 2 },
   { text: "Кіт 🐈", probability: 4 },
   { text: "КРАКЕН 🐙", probability: 1 },
   { text: "Пляшка різдвяного Опілля 🍺", probability: 3 },
