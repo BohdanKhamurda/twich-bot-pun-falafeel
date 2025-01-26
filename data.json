@@ -138,5 +138,13 @@
   "qdenn": {
     "text": "Візок 🛒",
     "weight": "2.18"
+  },
+  "spilledglue": {
+    "text": "Короп 🐟",
+    "weight": "0.47"
+  },
+  "leavemealone": {
+    "text": "Каблук 👠",
+    "weight": "23.13"
   }
 }
