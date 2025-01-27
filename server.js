@@ -3,6 +3,7 @@ const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3000;
 const path = 'data.json'; // Шлях до файлу для збереження даних
+const roshenPath = 'roshen.json'; // Шлях до файлу для цукерок
 
 // Масив з уловами
 const responses = [
@@ -35,6 +36,74 @@ const responses = [
   { text: "Пляшка різдвяного Опілля 🍺", probability: 3 },
 ];
 
+// Масив цукерок Roshen
+const roshenCandies = [
+  "Червоний мак",
+  "Ліщина",
+  "Кара-Кум",
+  "Ромашка",
+  "Київ вечірній",
+  "Стріла подільська",
+  "Bonny-Fruit",
+  "Candy Nut",
+  "Рачки",
+  "Шалена бджілка",
+  "Yummi Gummi",
+  "Шипучка",
+  "LolliPops",
+  "Бім-Бом",
+  "Еклер",
+  "Барбарис",
+  "Дюшес",
+  "Молочна крапля",
+  "Корівка",
+  "Сливки-Ленивки",
+  "Шоколапки",
+];
+
+// Завантаження стану Roshen
+let roshenData = {};
+if (fs.existsSync(roshenPath)) {
+  try {
+    const data = fs.readFileSync(roshenPath);
+    if (data.length > 0) {
+      roshenData = JSON.parse(data);
+    }
+  } catch (error) {
+    console.error('Помилка при зчитуванні стану Roshen:', error);
+  }
+}
+
+// Збереження стану Roshen у файл
+function saveRoshen() {
+  fs.writeFileSync(roshenPath, JSON.stringify(roshenData, null, 2));
+}
+
+// Роут для команди !roshen
+app.get('/roshen', (req, res) => {
+  const username = req.query.username; // Ім'я користувача передається в запиті, наприклад ?username=Іван
+  if (!username) {
+    return res.status(400).send("Помилка: потрібно вказати ім'я користувача через ?username=Ім'я");
+  }
+
+  if (roshenData[username]) {
+    return res.send(`😅 ${username}, ви вже отримали свою цукерку цього стріму: ${roshenData[username]}`);
+  }
+
+  const randomCandy = roshenCandies[Math.floor(Math.random() * roshenCandies.length)];
+  roshenData[username] = randomCandy; // Зберігаємо цукерку для користувача
+  saveRoshen();
+
+  res.send(`🎉 ${username}, ви отримали цукерку: ${randomCandy}!`);
+});
+
+// Роут для скидання стану Roshen (адмін-команда)
+app.get('/reset-roshen', (req, res) => {
+  roshenData = {}; // Скидаємо всі дані
+  saveRoshen();
+  res.send("Стан команди !roshen для всіх користувачів було успішно скинуто!");
+});
+
 // Завантаження даних при запуску сервера
 let bestCatches = {};
 if (fs.existsSync(path)) {
@@ -48,6 +117,7 @@ if (fs.existsSync(path)) {
     bestCatches = {}; // Якщо є помилка, ініціалізуємо порожній обʼєкт
   }
 }
+
 
 // Збереження даних у файл
 function saveData() {
