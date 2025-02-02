@@ -7,9 +7,9 @@ const roshenPath = 'roshen.json'; // Шлях до файлу для цукер�
 
 // Масив з уловами
 const responses = [
-  { text: "Окунь 🐟", probability: 10 },
-  { text: "Короп 🐟", probability: 10 },
-  { text: "Сом 🐟", probability: 5 },
+  { text: "Окунь 🐟", probability: 20 },
+  { text: "Короп 🐟", probability: 20 },
+  { text: "Сом 🐟", probability: 8 },
   { text: "Риба з раком 🦞🐟", probability: 5 },
   { text: "Кавун 🍉", probability: 3 },
   { text: "Кілька в томаті 🐟🍅", probability: 7 },
@@ -47,7 +47,7 @@ const responses = [
   { text: "Квиток в Чікаґо", probability: 3 },  
   { text: "Навушники за 800 злотих", probability: 8 },  
   { text: "Привітання з іменинами", probability: 9 },
-];
+];dedw
 
 // Масив цукерок Roshen
 const roshenCandies = [
