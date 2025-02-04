@@ -46,7 +46,7 @@ const responses = [
   { text: "Скриня скарбів", probability: 1 },  
   { text: "Квиток в Чікаґо", probability: 3 },  
   { text: "Навушники за 800 злотих", probability: 5 },  
-  { text: "Привітання з іменинами", probability: 3 },
+  { text: "Привітання з іменинами", probability: 2 },
 ];
 
 // Масив цукерок Roshen
