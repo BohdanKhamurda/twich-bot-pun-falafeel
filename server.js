@@ -184,6 +184,9 @@ app.get('/fish', (req, res) => {
       else if (username == 'ALFONSYCH'){
         result = `${username} впіймав Автотаймач на 5 хвилин вагою ${weight} кг!`;
       }
+      else if (username == 'Vader2022' && response.text == "Замовлення гри на стрім"){
+        result = `${username}, ви нічого не впіймали xddyou .`;
+      }
       else {
         result = `${username} впіймав ${response.text} вагою ${weight} кг!`;
       }
