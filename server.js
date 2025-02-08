@@ -5,6 +5,8 @@ const port = process.env.PORT || 3000;
 const path = 'data.json'; // Шлях до файлу для збереження даних
 const roshenPath = 'roshen.json'; // Шлях до файлу для цукерок
 
+const rules = [];
+
 // Масив з уловами
 const responses = [
   { text: "Окунь 🐟", probability: 20 },
