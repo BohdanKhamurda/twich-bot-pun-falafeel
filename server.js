@@ -105,7 +105,7 @@ const responses = [
   { text: "Роял флеш", probability: 1 },  
   { text: "4 туза", probability: 4 },  
   { text: "Скриня скарбів", probability: 1 },  
-  { text: "Квиток в Чікаґо", probability: 3 },  
+  { text: "Квиток в Чікаґо", probability: 4 },  
   { text: "Навушники за 800 злотих", probability: 5 },  
   { text: "Привітання з іменинами", probability: 2 },
 ];
