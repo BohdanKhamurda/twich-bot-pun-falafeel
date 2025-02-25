@@ -77,7 +77,7 @@
   },
   "P0BEPT0": {
     "text": "Короп 🐟",
-    "weight": "38.12"
+    "weight": "71.62"
   },
   "nyavkauk": {
     "text": "Сом 🐟",
@@ -246,5 +246,9 @@
   "MydakMydila": {
     "text": "Стріт",
     "weight": "33.97"
+  },
+  "RetroRickroll": {
+    "text": "Каблук 👠",
+    "weight": "4.99"
   }
 }
