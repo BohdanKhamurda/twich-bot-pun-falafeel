@@ -190,9 +190,11 @@ app.get('/reset-roshen', (req, res) => {
   res.send("Стан команди !roshen для всіх користувачів було успішно скинуто!");
 });
 
-// Функція для обчислення часу, що пройшов від 23:50 до поточного часу
+// Функція для обчислення часу, що пройшов від 23:50 (за Київським часом) до поточного часу
 function timeSince2350() {
-  const now = new Date();
+  // Отримуємо поточний час за Київським часом
+  const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Kiev" }));
+  
   // Створюємо дату з поточними даними, але встановлюємо час на 23:50
   let reference = new Date(now);
   reference.setHours(23, 50, 0, 0);
@@ -203,7 +205,6 @@ function timeSince2350() {
   }
   
   const diff = now - reference; // різниця у мілісекундах
-  
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);
