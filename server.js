@@ -190,6 +190,33 @@ app.get('/reset-roshen', (req, res) => {
   res.send("Стан команди !roshen для всіх користувачів було успішно скинуто!");
 });
 
+// Функція для обчислення часу, що пройшов від 23:50 до поточного часу
+function timeSince2350() {
+  const now = new Date();
+  // Створюємо дату з поточними даними, але встановлюємо час на 23:50
+  let reference = new Date(now);
+  reference.setHours(23, 50, 0, 0);
+  
+  // Якщо поточний час менше за 23:50, використовуємо попередній день
+  if (now < reference) {
+    reference.setDate(reference.getDate() - 1);
+  }
+  
+  const diff = now - reference; // різниця у мілісекундах
+  
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  
+  return { hours, minutes, seconds };
+}
+
+// Додаємо новий роут для отримання часу, що пройшов від 23:50 до поточного часу
+app.get('/time-since', (req, res) => {
+  const { hours, minutes, seconds } = timeSince2350();
+  res.send(`Стрім триває ${hours} годин, ${minutes} хвилин та ${seconds} секунд.`);
+});
+
 // Роут для команди !my-candy
 app.get('/my-candy', (req, res) => {
   const username = req.query.username; // Ім'я користувача передається в запиті, наприклад ?username=Іван
