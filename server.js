@@ -215,7 +215,7 @@ function timeSince2350() {
 // Додаємо новий роут для отримання часу, що пройшов від 23:50 до поточного часу
 app.get('/time-since', (req, res) => {
   const { hours, minutes, seconds } = timeSince2350();
-  res.send(`Стрім триває ${hours} годин, ${minutes} хвилин та ${seconds} секунд.`);
+  res.send(`Стрім триває ${hours} годин, ${minutes} хвилин та ${seconds} секунд. дурка`);
 });
 
 // Роут для команди !my-candy
